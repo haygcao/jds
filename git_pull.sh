@@ -89,7 +89,7 @@ function Git_PullScripts2 {
 ## 克隆scripts3
 function Git_CloneScripts3 {
   echo -e "克隆yangtingxiao脚本\n"
-  git clone -b main ${Scripts3URL} ${Scripts3Dir}
+  git clone -b master ${Scripts3URL} ${Scripts3Dir}
   ExitStatusScripts3=$?
   echo
 }
