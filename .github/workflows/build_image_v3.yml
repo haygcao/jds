@@ -1,6 +1,6 @@
 name: "JD Docker Image Buildx Stable Github V3"
 on:
-  workflow_dispatch:
+  
   
 jobs:
   build:
