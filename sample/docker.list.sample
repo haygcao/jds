@@ -17,12 +17,11 @@
 28 5 * * * bash jd jd_bean_home
 4 0,9 * * * bash jd jd_bean_sign
 0 11,14 * * * bash jd jd_blueCoin now
-59 23 * * * sleep 57; bash jd jd_blueCoin1 now
-59 23 * * * sleep 58; bash jd jd_blueCoin1 now
-59 23 * * * sleep 59; bash jd jd_blueCoin1 now
 59 23 * * * sleep 56; bash jd jd_blueCoin1 now
-0 0 * * * sleep 1; bash jd jd_blueCoin1 now
-0 0 * * * sleep 2; bash jd jd_blueCoin1 now
+59 23 * * * sleep 58; bash jd jd_blueCoin1 now
+59 23 * * * sleep 53; bash jd jd_blueCoin1 now
+59 23 * * * sleep 59; bash jd jd_blueCoin1 now
+0 0 * * * bash jd jd_blueCoin1 now
 12 8,12,18 * * * bash jd jd_bookshop
 37 7 * * * bash jd jd_car
 13 8,22 * * * bash jd jd_cash
@@ -44,7 +43,7 @@
 0 0 * * * bash jd jd_jdzz now
 6 0,8,9,13,18,22 * * * bash jd jd_joy
 */20 6-22 * * * bash jd jd_joy_feedPets
-59 15 * * * sleep 58; bash jd jd_joy_reward now
+0 16 * * * bash jd jd_joy_reward now
 18 11,14 * * * bash jd jd_joy_run
 0 0,6 * * * bash jd jd_joy_steal
 0 9,12,18 * * * bash jd jd_jxnc
@@ -79,7 +78,7 @@
 1 7 * * * bash jd jd_mh
 10 7 * * * bash jd jd_ms
 10 8 * * * bash jd jd_nh
-1 9,12,20 * * * bash jd jd_nian
+1 9,12,20,21 * * * bash jd jd_nian
 30 6-23 * * * bash jd jd_nianCollect
 20 0,6,8 * * * bash jd jd_nian_ar
 25 0,6 * * * bash jd jd_nian_sign
@@ -93,12 +92,10 @@
 # 40 * * * * bash jd jd_xxl_gh
 30 9 * * * bash jd jd_festival
 0 0,8,16 * * * bash jd jd_joy_500 now
-59 23,7,15 * * * sleep 58; bash jd jd_joy_500 now
-59 23,7,15 * * * sleep 59; bash jd jd_joy_500 now
+59 23,7,15 * * * sleep 52; bash jd jd_joy_500 now
+59 23,7,15 * * * sleep 54; bash jd jd_joy_500 now
 59 23,7,15 * * * sleep 57; bash jd jd_joy_500 now
+59 23,7,15 * * * sleep 58; bash jd jd_joy_500 now
 40 21 * * * bash jd jd_super
-
 0 0 * * *  bash jd jd_coupon
-29,30 12-23/1 * * * sleep 58; bash jd jd_live_redrain_half_2 now
-29,30 12-23/1 * * * sleep 59; bash jd jd_live_redrain_half_2 now
-30,31 12-23/1 * * * bash jd jd_live_redrain_half_2 now
+#5 */2 * * * bash jd jd_immortal_answer
