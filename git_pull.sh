@@ -54,7 +54,7 @@ function Git_PullShell {
 ## 克隆scripts
 function Git_CloneScripts {
   echo -e "克隆LXK9301脚本\n"
-  git clone -b master ${ScriptsURL} ${ScriptsDir}
+  git clone -b main ${ScriptsURL} ${ScriptsDir}
   ExitStatusScripts=$?
   echo
 }
@@ -65,7 +65,7 @@ function Git_PullScripts {
   cd ${ScriptsDir}
   git fetch --all
   ExitStatusScripts=$?
-  git reset --hard origin/master
+  git reset --hard origin/main
   echo
 }
 
@@ -116,24 +116,6 @@ function Count_UserSum {
   done
 }
 
-## 把config.sh中提供的所有账户的PIN附加在jd_joy_run.js中，让各账户相互进行宠汪汪赛跑助力
-## 你的账号将按Cookie顺序被优先助力，助力完成再助力我的账号和lxk0301大佬的账号
-function Change_JoyRunPins {
-  j=${UserSum}
-  PinALL=""
-  while [[ $j -ge 1 ]]
-  do
-    Tmp=Cookie$j
-    CookieTemp=${!Tmp}
-    PinTemp=$(echo ${CookieTemp} | perl -pe "{s|.*pt_pin=(.+);|\1|; s|%|\\\x|g}")
-    PinTempFormat=$(printf ${PinTemp})
-    PinALL="${PinTempFormat},${PinALL}"
-    let j--
-  done
-  PinEvine="鬼佬,jd_7547baef33a21,queenho,Bobo_vera,jd_ivyg521,jd_6ddb409109470,"
-  PinALL="${PinALL}${PinEvine}"
-  perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinALL}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
-}
 
 ## 修改lxk0301大佬js文件的函数汇总
 function Change_ALL {
@@ -141,7 +123,6 @@ function Change_ALL {
     . ${FileConf}
     if [ -n "${Cookie1}" ]; then
       Count_UserSum
-      Change_JoyRunPins
     fi
   fi
 }
