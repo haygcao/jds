@@ -69,22 +69,22 @@ function Git_PullScripts {
 }
 
 ## 克隆scripts2
-function Git_CloneScripts2 {
-  echo -e "克隆shylocks脚本\n"
-  git clone -b main ${Scripts2URL} ${Scripts2Dir}
-  ExitStatusScripts2=$?
-  echo
-}
+##function Git_CloneScripts2 {
+##  echo -e "克隆shylocks脚本\n"
+##  git clone -b main ${Scripts2URL} ${Scripts2Dir}
+##  ExitStatusScripts2=$?
+##  echo
+##}
 
 ## 更新scripts2
-function Git_PullScripts2 {
-  echo -e "更新shylocks脚本\n"
-  cd ${Scripts2Dir}
-  git fetch --all
-  ExitStatusScripts2=$?
-  git reset --hard origin/main
-  echo
-}
+##function Git_PullScripts2 {
+##  echo -e "更新shylocks脚本\n"
+##  cd ${Scripts2Dir}
+##  git fetch --all
+##  ExitStatusScripts2=$?
+##  git reset --hard origin/main
+##  echo
+##}
 
 ## 克隆scripts3
 function Git_CloneScripts3 {
@@ -159,7 +159,7 @@ function Diff_Cron {
     else
       grep "${ShellDir}/" ${ListCron} | grep -E " j[drx]_\w+" | perl -pe "s|.+ (j[drx]_\w+).*|\1|" | uniq | sort > ${ListTask}
     fi
-    cat ${ListCronLxk} ${ListCronShylocks} | grep -E "j[drx]_\w+\.js" | perl -pe "s|.+(j[drx]_\w+)\.js.+|\1|" | sort > ${ListJs}
+##    cat ${ListCronLxk} ${ListCronShylocks} | grep -E "j[drx]_\w+\.js" | perl -pe "s|.+(j[drx]_\w+)\.js.+|\1|" | sort > ${ListJs}
     grep -vwf ${ListTask} ${ListJs} > ${ListJsAdd}
     grep -vwf ${ListJs} ${ListTask} > ${ListJsDrop}
   else
@@ -308,7 +308,9 @@ function Add_Cron {
       then
         echo "4 0,9 * * * bash ${ShellJd} ${Cron}" >> ${ListCron}
       else
-        cat ${ListCronLxk} ${ListCronShylocks} | grep -E "\/${Cron}\." | perl -pe "s|(^.+)node */scripts/(j[drx]_\w+)\.js.+|\1bash ${ShellJd} \2|" >> ${ListCron}
+##        cat ${ListCronLxk} ${ListCronShylocks} | grep -E "\/${Cron}\." | perl -pe "s|(^.+)node */scripts/(j[drx]_\w+)\.js.+|\1bash ${ShellJd} \2|" >> ${ListCron}
+        cat ${ListCronLxk} | grep -E "\/${Cron}\." | perl -pe "s|(^.+)node */scripts/(j[drx]_\w+)\.js.+|\1bash ${ShellJd} \2|" >> ${ListCron}
+
       fi
     done
 
@@ -370,9 +372,9 @@ if [ ${ExitStatusShell} -eq 0 ]; then
   echo -e "--------------------------------------------------------------\n"
   [ -f ${ScriptsDir}/package.json ] && PackageListOld=$(cat ${ScriptsDir}/package.json)
   [ -d ${ScriptsDir}/.git ] && Git_PullScripts || Git_CloneScripts
-  [ -d ${Scripts2Dir}/.git ] && Git_PullScripts2 || Git_CloneScripts2
+##  [ -d ${Scripts2Dir}/.git ] && Git_PullScripts2 || Git_CloneScripts2
   [ -d ${Scripts3Dir}/.git ] && Git_PullScripts3 || Git_CloneScripts3
-  cp -f ${Scripts2Dir}/jd_*.js ${ScriptsDir}
+##  cp -f ${Scripts2Dir}/jd_*.js ${ScriptsDir}
   cp -f ${Scripts3Dir}/scripts/jd/jd_*.js ${ScriptsDir}
 fi
 
