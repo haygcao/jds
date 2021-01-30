@@ -6,7 +6,7 @@ on:
   
   watch:
     types: started
-  repository_dispatch:
+  
     types: repo-sync
 jobs:
   repo-sync:
